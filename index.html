@@ -6,14 +6,19 @@
         <title>New Web Project</title>
         <link rel="stylesheet" href="./css/main.css" type="text/css" />
         <script type="text/javascript" src="./js/jq.js"></script>
+        <script type="text/javascript" src="./js/main.js"></script>
     </head>
     <body>
         <form action="" method="post" onsubmit="return false;">
         	<label>文章名</label><input name="art_name" /><br/>
         	<label>作者</label><input name="art_author" /><br/>
         	<label>内容</label><input name="art_content" />
-        	<input type="submit" value="提交" />
+        	<input type="submit" id="submit" value="提交" />
         </form>
+        
+        <div id="show">
+
+        </div>
     </body>
 </html>
 
