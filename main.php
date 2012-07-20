@@ -1,5 +1,5 @@
 <?php
-	$rec_file = 'data/db';
+	$rec_file = 'data/tmp_db';
 	if($_GET['type'] == 'read'){
 		$file_pointer = fopen($rec_file,'r');
 		$file_read = fread($file_pointer, filesize($rec_file));
