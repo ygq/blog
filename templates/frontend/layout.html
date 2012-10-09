@@ -13,7 +13,8 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename="css/scrollable.css") }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename="css/skin.css") }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename="css/large.css") }}">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename="css/index.css") }}"
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename="css/index.css") }}">
+        {% block css %}{% endblock %}
     </head>
 
     <body>
@@ -22,14 +23,15 @@
                 <div id="top-menu">
                     <a href="{{ url_for('reg') }}">注册</a>
                     <a href="{{ url_for('reg_1') }}">注册1</a>
+                    <a href="{{ url_for('login') }}">登陆</a>
                 </div>
                 <div id="logo">
                     <h1>logo</h1>
                 </div>
                 <div id="menu">
                     <ul>
-                        <li><a href="#">home</a></li>
-                        <li><a href="#">home</a></li>
+                        <li><a href="/">home</a></li>
+                        <li><a href="{{ url_for('material') }}">素材</a></li>
                         <li><a href="#">home</a></li>
                         <li><a href="#">home</a></li>
                         <li><a href="#">home</a></li>

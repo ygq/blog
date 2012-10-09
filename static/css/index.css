@@ -16,6 +16,9 @@ a{
     background:white;
     overflow: hidden;
 }
+#main{
+    margin-top:10px;
+}
 #top-menu{
     width:100%;
     background:#F3F3F3;
@@ -46,9 +49,10 @@ a{
 }
 #content{
     float:left;
-    width:645px;
+    width:700px;
     border-right: 1px solid #EAECEF;
     padding-right:14px;
+    padding-left:10px;
 }
 .list{
     padding:20px 0;
@@ -63,5 +67,5 @@ a{
 }
 #sidebar{
     float:right;
-    width:290px;
+    width:250px;
 }

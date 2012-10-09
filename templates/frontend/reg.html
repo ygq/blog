@@ -1,5 +1,6 @@
 {% extends 'frontend/layout.html' %}
 {% block main %}
+<div  id="main">
            <!--表单验证-->
             <form  name="contactform" id="myform">
     
@@ -66,14 +67,14 @@
                             <textarea name="comments" cols="40" rows="3" id="comments"></textarea>
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field" style="overflow:hidden;">
                         <div class="label">
                             <label for="verify" accesskey="V">验证码：</label>
                         </div>
                         <div class="input_box">
-                            <img src="{{ url_for('static',filename="images/verify.png") }}" alt="Image verification" border="0">
                             <input name="verify" type="text" id="verify" size="6" value="" required="required">
-                            <span>*</span>
+                            <div id="code"><img src="{{ url_for('static',filename="images/verify.png") }}" alt="Image verification" border="0"></div>
+                            <span id="change_cas">换一张</span>
                         </div>
                     </div>
                     <div class="field">
@@ -135,5 +136,5 @@
         </div>
         
 
-
+</div>
 {% endblock %}

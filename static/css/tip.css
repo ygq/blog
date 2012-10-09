@@ -2,11 +2,10 @@
 /* simple css-based tooltip */
 .tooltip {
     border:1px solid #fff;
-    background-color:#3d7483;
+    background-color:#fff;
     padding:10px 15px;
     width:70px;
     display:none;
-    color:#fff;
     text-align:left;
     font-size:12px;
 

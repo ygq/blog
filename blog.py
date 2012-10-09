@@ -13,5 +13,13 @@ def reg():
 def reg_1():
     return render_template('frontend/reg_1.html')
 
+@frontend.route('/material/')
+def material():
+    return render_template("frontend/material.html")
+
+@frontend.route('/login/')
+def login():
+    return render_template('frontend/login.html')
+
 if __name__ == "__main__":
     frontend.run(debug = True)
