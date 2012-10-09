@@ -29,7 +29,7 @@
                             <label for="verify" accesskey="V">验证码：</label>
                         </div>
                         <div class="input_box">
-                            <input name="verify" type="text" id="verify" size="6" value="" required="required">
+                            <input name="verify" type="text" id="verify" size="6" value="" >
                             <div id="code"><img src="{{ url_for('static',filename="images/verify.png") }}" alt="Image verification" border="0"></div>
                             <span id="change_cas">换一张</span>
                         </div>
@@ -61,7 +61,11 @@
                     $("#myform").validator({position: 'top left',offset: [30, 280]}).submit(function(e) {
                         var form = $(this);
                         if (!e.isDefaultPrevented()) {
-                            $.getJSON("/user/login" + form.serialize(), function(json) {
+                           var data = {
+                                name:$('input[name="name"]').val(),
+                                password:$('input[name="password"]').val()
+                            }
+                            $.get("/user/",data, function(json) {
                                 if (json === true)  {
                                         form.load("success.php");
                                     } else {
