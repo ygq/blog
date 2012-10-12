@@ -30,6 +30,10 @@ def material():
 def login():
     return render_template('frontend/login.html')
 
+@frontend.route('/confirm/')
+def confirm():
+    return render_template('frontend/confirm.html')
+
 @frontend.route('/table/')
 def table():
     arr = [
