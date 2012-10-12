@@ -64,6 +64,7 @@ a{
 #content h2{
     color:#E25D33;
     border-bottom: 1px dashed #E7E7E7;
+    margin-bottom:5px;
 }
 #sidebar{
     float:right;
