@@ -1,0 +1,101 @@
+{% extends 'frontend/layout.html' %}
+{% block main %}
+<div  id="main">
+           <!--表单验证-->
+            <form  name="contactform" id="myform">
+    
+                <fieldset>
+                    <div class="field">
+                        <div class="label">
+                            <label for="name" accesskey="U">用户名：</label>
+                        </div>
+                        <div class="input_box">
+                            <input name="name" type="text" id="name" size="30" required="required" maxlength='20' minlength='2' title="请输入2-20个字符">
+                            <span>*</span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            <label for="password" accesskey="E">密码：</label>
+                        </div>
+                        <div class="input_box">
+                            <input type="password" name="password" minlength="4" id="password" title="请输入不小四位的密码" />
+                            <span>*</span>
+                        </div>
+                    </div>
+                   
+                    <div class="field" style="overflow:hidden;">
+                        <div class="label">
+                            <label for="verify" accesskey="V">验证码：</label>
+                        </div>
+                        <div class="input_box">
+                            <input name="verify" type="text" id="verify" size="6" value="" >
+                            <div id="code"><img src="{{ url_for('static',filename="images/verify.png") }}" alt="Image verification" border="0"></div>
+                            <span id="change_cas">换一张</span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="input_submit">
+                            <button type="submit" class="submit" >提交表单</button>
+                            <button type="reset" class="submit" >重填</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <script type="text/javascript">
+                            //最少输入字符限制
+                    $.tools.validator.fn("[minlength]", function(input, value) {
+                            var min = input.attr("minlength");
+                        
+                            return value.length >= min ? true : {
+                            en: "请提供至少 " +min+ " 字符",
+                            fi: "Kent&auml;n minimipituus on " +min+ " merkki&auml;"
+                            };
+                            });
+                            //检查密码
+                     $.tools.validator.fn("[data-equals]", "两次输入的密码不同", function(input) {
+                            var name = input.attr("data-equals"),
+                            field = this.getInputs().filter("[name=" + name + "]");
+                            return input.val() == field.val() ? true : [name];
+                            });     
+                    $("#myform").validator({position: 'top left',offset: [30, 280]}).submit(function(e) {
+                        var form = $(this);
+                        if (!e.isDefaultPrevented()) {
+                           var data = {
+                                name:$('input[name="name"]').val(),
+                                password:$('input[name="password"]').val()
+                            }
+                            $.get("/user/",data, function(json) {
+                                if (json === true)  {
+                                        form.load("success.php");
+                                    } else {
+                                        form.data("validator").invalidate(json);
+                                    }
+                            });
+                            e.preventDefault();
+                            
+                        }
+                        });
+                        //表单提示
+                    $("#myform :input[title]").tooltip({
+                 
+                      // place tooltip on the right edge
+                      position: "center right",
+                 
+                      // a little tweaking of the position
+                      offset: [-2, 10],
+                 
+                      // use the built-in fadeIn/fadeOut effect
+                      effect: "fade",
+                 
+                      // custom opacity setting
+                      opacity: 0.7
+                 
+                      });
+  
+            </script>
+        </div>
+        
+</div>
+
+{% endblock %}
