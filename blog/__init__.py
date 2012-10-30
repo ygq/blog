@@ -1,3 +1,7 @@
+#conding = utf-8
 from flask import Flask
-frontend = Flask(__name__)
-import blog.views
+from blog.views.frontend import frontend
+from blog.views.admin import admin
+app = Flask(__name__)
+app.register_blueprint(frontend)
+app.register_blueprint(admin)
