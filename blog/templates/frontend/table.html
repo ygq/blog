@@ -18,6 +18,10 @@
                                 <th>alexa</th>
                             </tr>
                         </thead>
+                        {% with %}
+                        {% set foo =[3,234,34,342] %}
+                        {% for i in foo|sort  %}{{i}} {% endfor %}
+                        {% endwith %}
                         <tbody>
                             {% for i in arr %}
                             <tr>

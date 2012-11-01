@@ -1,9 +1,9 @@
 #conding = utf-8
 from functools import wraps
-from flask import Flask, request, session, g, redirect, url_for, \
+from flask import request, session, g, redirect, url_for, \
      abort, render_template, flash,jsonify,Blueprint
+import urllib2
 #from blog import frontend
-
 #frontend = Blueprint('frontend', __name__,)
 frontend = Blueprint('frontend', __name__,static_folder='static')
 def damy(template=None):
@@ -25,36 +25,40 @@ def damy(template=None):
 @frontend.route('/')
 @damy()
 def index():
-    ret = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    return render_template('frontend/index.html')
+    content = urllib2.urlopen('http://corker.cc').read()
+    print content
 
-@frontend.route('/')
-def index():
-    return render_template('frontend/index.html')
 
 @frontend.route('/reg/')
 @damy()
 def reg():
+    content = urllib2.urlopen('http://corker.cc').read()
     pass
 #    return render_template('frontend/reg.html')
 
 @frontend.route('/reg_1/')
+@damy()
 def reg_1():
-    return render_template('frontend/reg_1.html')
+    pass
 
 @frontend.route('/material/')
+@damy()
 def material():
-    return render_template("frontend/material.html")
+    pass
 
 @frontend.route('/login/')
+@damy()
 def login():
-    return render_template('frontend/login.html')
+
+    pass
 
 @frontend.route('/confirm/')
+@damy()
 def confirm():
-    return render_template('frontend/confirm.html')
+    pass
 
 @frontend.route('/table/')
+@damy()
 def table():
     arr = [
            {'name':'baidu.com','shulu':'345','kuaizhao':'2012-10-11','br':'3','pr':'4','prshu':'sdf','alexa':'2334423'},
@@ -64,9 +68,10 @@ def table():
            {'name':'youdao.com','shulu':'3593','kuaizhao':'2012-10-9','br':'2','pr':'3','prshu':'sdf','alexa':'533423'},
            {'name':'yahou.com','shulu':'393','kuaizhao':'2012-10-54','br':'5','pr':'7','prshu':'sdf','alexa':'2523'}
            ]
-    return render_template('frontend/table.html',arr=arr)
+    return {'arr':arr}
 
 @frontend.route('/user/')
+@damy()
 def user():
     name = request.args.get('name')
     password = request.args.get('password')
@@ -75,5 +80,5 @@ def user():
     elif password != frontend.config['PASSWORD']:
         error = 'Invalid password'
     else:
-        return redirect(url_for('index'))
+        pass
     #return render_template('frontend/login.html')

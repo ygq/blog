@@ -1,10 +1,8 @@
 #conding = utf-8
 from functools import wraps
-from flask import Flask, request, session, g, redirect, url_for, \
-     abort, render_template, flash,jsonify,Blueprint
-#from blog import admin
+from flask import g, request, redirect, url_for,Blueprint,render_template
+from flask.ext.principal import RoleNeed, Permission,Principal
 
-#frontend = Blueprint('frontend', __name__,)
 admin = Blueprint('admin', __name__,static_folder='static')
 def damy(template=None):
     def decorator(f):
@@ -22,8 +20,8 @@ def damy(template=None):
         return decorated_function
     return decorator
 
-@admin.route('/admin/')
+@admin.route('/')
 @damy()
 def index():
     ret = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    return render_template('admin/admin.html')
+    return Response('Only if you are an admin')
